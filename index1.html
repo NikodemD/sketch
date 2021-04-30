@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <script src="p5.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+      
+        <div id="element1" style="position: relative; left: 20px; top: 20px; width: 1200px; margin: 0; display:block"></div>
+        <form id="panel" style="position: relative; left: 20px; top: 30px;" >
+            <div>
+              <input type="range" min="1" max="255" value="50" class="slider" id="slider_1"/>
+            </div>
+            <p>Daylight slider</p>
+          
+          <div>
+            <input type="range" min="0" max="255" value="0" class="slider" display = "block" id="slider_2"/>
+          </div>
+          <div>
+            <input type="range" min="0" max="255" value="0" class="slider" display = "none" id="slider_3"/>
+          </div>
+          <div>
+            <input type="range" min="0" max="255" value="0" class="slider" display = "none" id="slider_4"/>
+          </div>
+
+            <p>Electric lighting</p>
+         
+            <button type="button" onclick="cct1()"; class="button">CCT1</button>
+            <button type="button" onclick="cct2()"; class="button">CCT2</button>
+            <button type="button" onclick="cct3()"; class="button">CCT3</button>
+      
+          </form>
+          <script>
+            function cct1() {
+              var x = document.getElementById("slider_2");
+              var y = document.getElementById("slider_3");
+              var z = document.getElementById("slider_4");
+
+              //Schowanie suwakow, ktore nie kontorluja "aktywnego" obrazka
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "none";
+              
+              //Zabranie wartosci z suwakow, jezeli maja wartosc wieksza niz 0, i przypisanie do "aktywnego" suwaka
+              if (y.value > 0){
+                x.value = y.value;
+              } else if (z.value > 0) {
+                x.value = z.value;
+              }
+              y.value = 0;
+              z.value = 0;
+            }
+
+            function cct2() {
+              var x = document.getElementById("slider_2");
+              var y = document.getElementById("slider_3");
+              var z = document.getElementById("slider_4");
+
+              //Schowanie suwakow, ktore nie kontorluja "aktywnego" obrazka
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
+              
+              //Zabranie wartosci z suwakow, jezeli maja wartosc wieksza niz 0, i przypisanie do "aktywnego" suwaka
+              if (x.value > 0){
+                y.value = x.value;
+              } else if (z.value > 0) {
+                y.value = z.value;
+              }
+              x.value = 0;
+              z.value = 0;
+            }
+
+            function cct3() {
+              var x = document.getElementById("slider_2");
+              var y = document.getElementById("slider_3");
+              var z = document.getElementById("slider_4");
+
+              //Schowanie suwakow, ktore nie kontorluja "aktywnego" obrazka
+                x.style.display = "none";
+                y.style.display = "none";
+                z.style.display = "block";
+              
+              //Zabranie wartosci z suwakow, jezeli maja wartosc wieksza niz 0, i przypisanie do "aktywnego" suwaka
+              if (x.value > 0){
+                z.value = x.value;
+              } else if (y.value > 0) {
+                z.value = y.value;
+              }
+              x.value = 0;
+              y.value = 0;
+            }
+            //Chowanie i przekazywanie sukwaow dziala OK, ale nie wiem jak zrobic, zeby na starcie pokazal sie tylko suwak slider_2 (a reszta byla niewidoczna dla uzytkownika)
+
+        
+            </script>
+
+        <script src="sketch3.js"></script>
+
+
+
+    </body>
+
+</html>
